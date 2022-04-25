@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet"href="index.css">
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    .wrap{
+        width: 100vw;
+        height: 100vh;
+        background:url(c.jpg);
+        background-size: cover;
+        background-position: bottom;
+    }
+    .b{
+        width: 100%;
+        height: 100%;
+        overflow:hidden;
+        position:relative;
+    }
+    .bb{
+        width: 3px;
+        height:3px;
+        border:transparent solid rgb(255, 255, 255);
+        border-radius:50%;
+        background-color: #fff;
+        animation: ssnow  5s  ;
+        position:absolute;
+        top:-10%;
+        /* left:5%; */
+        transform:translateX(5%),scale(5);
+    }
+@keyframes ssnow{
+    0%{
+        top: -10%;
+    }
+    100%{
+        top:110%;
+    }
+}
+@media screen and (max-width:480px){
+    .wrap{
+        width: 100vw;
+        height: 100vh;
+        background:url(d.jpeg);
+        background-size: cover;
+        background-position: bottom;
+    }
+}
+@media screen and (max-width:720px) and ( min-width:480px){
+    .wrap{
+        width: 100vw;
+        height: 100vh;
+        background:url(b.jpeg);
+        background-size: cover;
+        background-position: bottom;
+    }
+}
+@media screen and (max-width:960px) and ( min-width:720px){
+    .wrap{
+        width: 100vw;
+        height: 100vh;
+        background:url(a.jpeg);
+        background-size: cover;
+        background-position: bottom;
+    }
+}
+</style>
+<body>
+    <header>
+        <div><a href="index1.html"><h1>wei chine huang</h1></a></div>
+        <nav>
+            <a href="#">個人簡歷</a>
+            <a href="index3.html">個人作品</a>
+            <a href="#">生活經歷</a>
+            <a href="#">聯絡方式</a>
+        </nav>
+    </header>
+    <div class="wrap">
+        <div class="b"num="100" dd="10"></div>
+    </div>
+    <script>
+        (function(w,d){
+            let b=d.querySelector(".b");
+          
+            let num=b.getAttribute("num");
+            let dd=b.getAttribute("dd");
+            snowdown()
+            // setInterval(snowdown,dd*1000)
+            console.log(bw*Math.random())
+            function snowdown(){
+                let bw= b.clientWidth
+                if(bw>=960){num=num*bw/300}
+                else if(bw>=720){num=num*bw/400}
+                else if(bw>=480){num=num*bw/300}
+
+                b.innerHTML = '';
+                for(let i=0;i<num;i++){
+                let bb = d.createElement("div");
+                bb.classList.add("bb");
+                bb.style.cssText=`
+                    transform:translate(${bw*Math.random()}px,0) scale(${3*Math.random()});
+                    
+                    animation:ssnow ${dd*Math.random()}s infinite ease-in;
+                `
+                b.appendChild(bb)
+            }
+           }
+
+        })(window, document);
+    </script>
+</body>
+</html>
